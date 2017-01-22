@@ -1,4 +1,4 @@
-# docker-sphinx
+# docker-sphinx-recommonmark
 Sphinx documentation toolchain, latex dependencies and pandoc including [recommonmark](https://github.com/rtfd/recommonmark) in an Ubuntu docker container.
 
 # How to Use it
