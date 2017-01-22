@@ -8,7 +8,7 @@ FROM       ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 
 # Update apt-get sources AND install stuff
-RUN apt-get update && apt-get install -y -q texlive texlive-lang-cjk python-pip
+RUN apt-get update && apt-get install -y -q texlive texlive-latex-extra texlive-lang-cjk python-pip make
 RUN pip install --upgrade pip
 RUN pip install Sphinx
 RUN pip install recommonmark
