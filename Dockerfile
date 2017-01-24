@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y -q texlive texlive-latex-extra texlive-
 RUN pip install --upgrade pip
 RUN pip install Sphinx
 RUN pip install recommonmark
+RUN pip install sphinxcontrib-textstyle
 
 RUN mkdir documents
 
