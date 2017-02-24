@@ -13,7 +13,6 @@ RUN pip install --upgrade pip
 RUN pip install Sphinx
 RUN pip install recommonmark
 RUN pip install sphinxcontrib-textstyle
-RUN pip install sphinx-numfig
 
 RUN mkdir documents
 
