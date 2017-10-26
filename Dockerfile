@@ -13,6 +13,8 @@ RUN pip install --upgrade pip
 RUN pip install Sphinx
 RUN pip install recommonmark
 RUN pip install sphinxcontrib-textstyle
+## tk0miya's *diag series
+RUN pip install sphinxcontrib-blockdiag sphinxcontrib-nwdiag sphinxcontrib-seqdiag sphinxcontrib-actdiag
 
 RUN mkdir documents
 
