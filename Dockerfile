@@ -1,24 +1,50 @@
-# Format: FROM    repository[:version]
-FROM       ubuntu:16.04
+# Format: FROM repository[:version]
+FROM ubuntu:18.04 as base
+
+FROM base as tex-base
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get -qq update \
+    && apt-get install -y --no-install-recommends -q \
+        texlive \
+        texlive-latex-extra \
+        texlive-lang-cjk \
+        fonts-noto-cjk \
+        fonts-noto-cjk-extra \
+        make \
+        latexmk \
+        git \
+        python3 \
+        python3-dev
+
+FROM base as python-setting
+RUN apt-get -qq update \
+    && apt-get install -y --no-install-recommends -q \
+        build-essential \
+        wget \
+        python3 \
+        python3-dev \
+        libjpeg-dev \
+        zlib1g-dev \
+        libfreetype6 \
+        libfreetype6-dev
+COPY requirements.txt .
+COPY constraints.txt .
+RUN python3 -m venv --without-pip /install \
+    && . /install/bin/activate \
+    && wget --no-check-certificate -L -O get-pip.py https://bootstrap.pypa.io/get-pip.py \
+    && python3 get-pip.py \
+    && pip3 install --no-cache-dir -U pip \
+    && pip3 install --no-cache-dir --install-option="--prefix=/install" -r requirements.txt -c constraints.txt
 
 # Usage:
 # docker run -it -v <your directory>:/documents/
-
-
-ENV DEBIAN_FRONTEND noninteractive
-
-# Update apt-get sources AND install stuff
-RUN apt-get update && apt-get install -y -q texlive texlive-latex-extra texlive-lang-cjk python-pip make latexmk git
-RUN pip install --upgrade pip
-RUN pip install Sphinx
-RUN pip install recommonmark
-RUN pip install sphinxcontrib-textstyle
-## tk0miya's *diag series
-RUN pip install sphinxcontrib-blockdiag sphinxcontrib-nwdiag sphinxcontrib-seqdiag sphinxcontrib-actdiag
+FROM tex-base
+COPY --from=python-setting /install /install
 
 RUN mkdir documents
-
 WORKDIR /documents
 VOLUME /documents
-
+ENV PATH /install/bin:$PATH
 CMD ["/bin/bash"]
+
+
