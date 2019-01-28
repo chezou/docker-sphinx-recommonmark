@@ -1,0 +1,7 @@
+Sphinx
+recommonmark
+sphinxcontrib-textstyle
+sphinxcontrib-blockdiag
+sphinxcontrib-nwdiag
+sphinxcontrib-seqdiag
+sphinxcontrib-actdiag
