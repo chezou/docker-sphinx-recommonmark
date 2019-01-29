@@ -8,6 +8,8 @@ RUN apt-get -qq update \
         texlive \
         texlive-latex-extra \
         texlive-lang-cjk \
+        texlive-lang-japanese \
+        ghostscript \
         fonts-noto-cjk \
         fonts-noto-cjk-extra \
         make \
