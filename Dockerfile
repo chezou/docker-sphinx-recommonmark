@@ -15,6 +15,7 @@ RUN apt-get -qq update \
         make \
         latexmk \
         git \
+        openssh-client \
         python3 \
         python3-dev
 
