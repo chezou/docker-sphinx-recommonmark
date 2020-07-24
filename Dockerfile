@@ -1,5 +1,5 @@
 # Format: FROM repository[:version]
-FROM ubuntu:18.04 as base
+FROM ubuntu:20.04 as base
 
 FROM base as tex-base
 ENV DEBIAN_FRONTEND noninteractive
@@ -37,7 +37,7 @@ RUN python3 -m venv --without-pip /install \
     && wget --no-check-certificate -L -O get-pip.py https://bootstrap.pypa.io/get-pip.py \
     && python3 get-pip.py \
     && pip3 install --no-cache-dir -U pip \
-    && pip3 install --no-cache-dir --install-option="--prefix=/install" -r requirements.txt -c constraints.txt
+    && pip3 install --no-cache-dir --prefix=/install -r requirements.txt -c constraints.txt
 
 # Usage:
 # docker run -it -v <your directory>:/documents/
