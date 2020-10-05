@@ -4,8 +4,11 @@ Babel==2.8.0
 blockdiag==2.0.1
 certifi==2020.6.20
 chardet==3.0.4
+colorama==0.4.3
 commonmark==0.9.1
 docutils==0.16
+docutils-ast-writer==0.1.2
+future==0.18.2
 funcparserlib==0.3.6
 idna==2.10
 imagesize==1.2.0
@@ -22,7 +25,7 @@ requests==2.24.0
 seqdiag==2.0.0
 six==1.15.0
 snowballstemmer==2.0.0
-Sphinx==3.1.2
+Sphinx==3.2.1
 sphinxcontrib-actdiag==2.0.0
 sphinxcontrib-applehelp==1.0.2
 sphinxcontrib-blockdiag==2.0.0
